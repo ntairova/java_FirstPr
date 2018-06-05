@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class TestBase extends ApplicationManager {
 
 
   FirefoxDriver wd;
@@ -25,10 +25,14 @@ public class TestBase {
 
   @BeforeMethod
   public void setUp() throws Exception {
-      wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-      wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-      wd.get("http://localhost/addressbook");
-      login("admin", "secret");
+    init();
+  }
+
+  private void init() {
+    wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
+    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.get("http://localhost/addressbook");
+    login("admin", "secret");
   }
 
   private void login(String username, String password) {
@@ -68,7 +72,11 @@ public class TestBase {
 
   @AfterMethod
   public void tearDown() {
-      wd.quit();
+      stop();
+  }
+
+  private void stop() {
+    wd.quit();
   }
 
   protected void deleteSelectedGroup() {
