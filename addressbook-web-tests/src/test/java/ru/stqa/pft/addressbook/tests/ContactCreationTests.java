@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactCreationTests {
   FirefoxDriver wd;
@@ -34,7 +35,7 @@ public class ContactCreationTests {
   @Test
   public void testContactCreation() {
     gotoNewContactPage();
-    fillContactForm(new ContactDATA("Nelya", "Tairova", "n0187@test.ru"));
+    fillContactForm(new ContactData("Nelya", "Tairova", "n0187@test.ru"));
     submitContactCreation();
     returnToHomePage();
   }
@@ -47,16 +48,16 @@ public class ContactCreationTests {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  private void fillContactForm(ContactDATA contactDATA) {
+  private void fillContactForm(ContactData contactData) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys(contactDATA.getFirstname());
+    wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
     wd.findElement(By.name("lastname")).click();
     wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys(contactDATA.getLastname());
+    wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys(contactDATA.getEmail());
+    wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
     }
 
   private void gotoNewContactPage() {
