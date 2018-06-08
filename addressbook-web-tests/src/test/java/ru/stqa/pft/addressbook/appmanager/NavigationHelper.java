@@ -13,4 +13,8 @@ public class NavigationHelper extends HelperBase{
   public void gotoGrouppage() {
       click(By.linkText("groups"));
   }
+
+  public void gotoNewContactPage() {
+    wd.findElement(By.linkText("add new")).click();
+  }
 }
