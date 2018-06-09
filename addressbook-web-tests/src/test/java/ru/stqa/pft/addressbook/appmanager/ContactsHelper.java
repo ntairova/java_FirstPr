@@ -35,11 +35,24 @@ public class ContactsHelper extends HelperBase {
     wd.findElement(locator).sendKeys(text);
   }
 
+
   public void SelectContactToRemove() {
-    click(By.id("7"));
+    click(By.name("selected[]"));
+    //if (!wd.findElement(By.id("3")).isSelected()) {
+    //  wd.findElement(By.id("3")).click();
+    //}
   }
 
   public void RemoveSelectedContact() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
+
+  public void initGroupModification() {
+    click(By.xpath("//table[@id='maintable']/tbody/tr[5]/td[8]/a/img"));
+  }
+
+  public void SubmitContactModification() {
+    click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+
   }
 }

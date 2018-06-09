@@ -7,7 +7,7 @@ public class ContactDeletionContact extends TestBase {
 
     
     @Test
-    public void ContactDeletionContact() {
+    public void testContactDeletionContact() {
         app.getContactsHelper().SelectContactToRemove();
         app.getContactsHelper().RemoveSelectedContact();
     }
